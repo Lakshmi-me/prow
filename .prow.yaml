@@ -1,0 +1,19 @@
+postsubmits:
+- name: yamllint-postsubmit
+  always_run: true
+  decorate: true
+  spec:
+    containers:
+    - image: quay.io/kubermatic/yamllint:0.1
+      command:
+      - yamllint
+      - -c
+      - .yamllint.conf
+      - ./
+
+- name: build-postsubmit
+  decorate: true
+  spec:
+    containers:
+    - image: alpine
+      command: ["/bin/printenv"]
